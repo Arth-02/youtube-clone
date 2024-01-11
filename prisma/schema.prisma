@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Model
+model User {
+  id            Int            @id @default(autoincrement())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime
+  username      String         @unique
+  email         String         @unique
+  emailVerified DateTime?
+  password      String
+  profileImage  String?
+  role          Role           @default(USER)
+  channel       Channel?
+  subscriptions Subscription[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// Channel Model
+model Channel {
+  id          Int            @id @default(autoincrement())
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime
+  name        String         @unique
+  thumbnail   String?
+  description String?
+  ownerId     Int            @unique
+  owner       User           @relation(fields: [ownerId], references: [id])
+  subscribers Subscription[]
+}
+
+// Video Model
+model Video {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  title     String
+  thumbnail String?
+  video     String
+  views     Int       @default(0)
+  comments  Comment[]
+}
+
+// Comment Model
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  text      String
+  likes     Int      @default(0)
+  dislikes  Int      @default(0)
+  video     Video    @relation(fields: [videoId], references: [id])
+  videoId   Int
+}
+
+// Subscription Model
+model Subscription {
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  subscriberId   Int
+  subscriber     User     @relation(fields: [subscriberId], references: [id])
+  subscribedToId Int
+  Channel        Channel? @relation(fields: [channelId], references: [id])
+  channelId      Int?
+}
