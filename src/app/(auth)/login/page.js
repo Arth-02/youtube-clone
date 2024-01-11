@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { signIn } from "next-auth/react";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="w-full flex flex-col justify-center mt-5 py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -158,4 +158,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

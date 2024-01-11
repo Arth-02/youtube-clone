@@ -4,7 +4,7 @@ import Comments from './components/Comments'
 import TabNav from '@/components/TabNav'
 import HorizontalCard from './components/HorizontalCard'
 
-const page = () => {
+const Page = () => {
   return (
     <main className='w-full h-auto mt-14 px-[100px] flex'>
       <div className='left w-full max-w-[1280px] flex flex-1 flex-col pr-4'>
@@ -19,4 +19,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
