@@ -21,4 +21,6 @@ const Svgbutton = React.forwardRef(({ isactive, className, ...props }, ref) => {
   );
 });
 
+Svgbutton.displayName = "Svgbutton";
+
 export default Svgbutton;

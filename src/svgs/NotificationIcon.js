@@ -24,4 +24,6 @@ const NotificationIcon = React.forwardRef(({ isactive, ...props }, ref) => {
   );
 });
 
+NotificationIcon.displayName = 'NotificationIcon';
+
 export default NotificationIcon;
