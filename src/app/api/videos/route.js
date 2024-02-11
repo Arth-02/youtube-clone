@@ -14,21 +14,21 @@ export async function GET(){
     return NextResponse.json(videos);
 }
 
-export async function GET(request){
-    const { id } = request.params;
+// export async function GET(request){
+//     const { id } = request.params;
 
-    const video = await prisma.video.findUnique({
-        where: {
-            id: Number(id),
-        },
-    });
+//     const video = await prisma.video.findUnique({
+//         where: {
+//             id: Number(id),
+//         },
+//     });
 
-    if(!video){
-        return NextResponse.redirect("/404");
-    }
+//     if(!video){
+//         return NextResponse.redirect("/404");
+//     }
 
-    return NextResponse.json(video);
-}
+//     return NextResponse.json(video);
+// }
 
 export async function POST(request){
     const { title, description, url } = await request.body.json();
