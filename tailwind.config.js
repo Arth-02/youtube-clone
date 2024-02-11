@@ -26,6 +26,8 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         hover: "hsl(var(--hover))",
         hoveractive: "hsl(var(--hover-active))",
+        descriptionbg: "hsl(var(--description-bg))",
+        descriptionactivebg: "hsl(var(--description-active-bg))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -90,20 +92,20 @@ module.exports = {
         "ripple": "ripple 0.8s ease-out",
       },
       fontFamily: {
-        sans: ["var(--roboto)", ...fontFamily.sans],
-        mono: ["var(--inter)", ...fontFamily.mono],
         roboto: ["var(--roboto)", ...fontFamily.sans],
       },
       fontWeight: {
-        light: "200",
-        normal: "300",
-        medium: "400",
-        bold: "500",
+        light: "300",
+        normal: "400",
+        medium: "500",
+        bold: "600",
       },
       fontSize: {
         'xs': '.625rem',    // 10px
         'sm': '.75rem',     // 12px
+        'my': '.8125rem',   // 13px
         'base': '.875rem',  // 14px
+        'base2': '0.9375rem',  // 15px
         'lg': '1rem',       // 16px
         'xl': '1.125rem',   // 18px
         '2xl': '1.25rem',   // 20px

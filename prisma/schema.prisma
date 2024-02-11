@@ -9,18 +9,20 @@ datasource db {
 
 // User Model
 model User {
-  id            Int            @id @default(autoincrement())
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime
-  username      String         @unique
-  email         String         @unique
-  emailVerified DateTime?
-  password      String
-  profileImage  String?
-  role          Role           @default(USER)
-  channel       Channel?
-  subscriptions Subscription[]
-  comments      Comment[]
+  id               Int               @id @default(autoincrement())
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime
+  username         String            @unique
+  email            String            @unique
+  emailVerified    DateTime?
+  password         String
+  profileImage     String?
+  role             Role              @default(USER)
+  channels         Channel[]
+  subscriptions    Subscription[]
+  comments         Comment[]
+  videoEngagements VideoEngagement[]
+  videoViews       VideoView[]
 }
 
 enum Role {
@@ -31,33 +33,32 @@ enum Role {
 // Channel Model
 model Channel {
   id          Int            @id @default(autoincrement())
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime
   name        String         @unique
   thumbnail   String?
   description String?
-  ownerId     Int            @unique
+  ownerId     Int            
   owner       User           @relation(fields: [ownerId], references: [id])
   subscribers Subscription[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime
 }
 
 // Video Model
 model Video {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime
-  title     String
-  thumbnail String?
-  video     String
-  views     Int       @default(0)
-  comments  Comment[]
+  id               Int               @id @default(autoincrement())
+  title            String
+  thumbnail        String?
+  video            String
+  comments         Comment[]
+  videoEngagements VideoEngagement[]
+  videoViews       VideoView[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime
 }
 
 // Comment Model
 model Comment {
   id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime
   text      String
   likes     Int       @default(0)
   dislikes  Int       @default(0)
@@ -68,6 +69,8 @@ model Comment {
   comments  Comment[] @relation("Reply")
   commentId Int?
   comment   Comment?  @relation("Reply", fields: [commentId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
 }
 
 // Subscription Model
@@ -80,4 +83,28 @@ model Subscription {
   subscribedToId Int
   Channel        Channel? @relation(fields: [channelId], references: [id])
   channelId      Int?
+}
+
+// Video Engagement Model
+model VideoEngagement {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  videoId   Int
+  video     Video    @relation(fields: [videoId], references: [id])
+  like      Boolean  @default(false)
+  dislike   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
+// Video View Model
+model VideoView {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  videoId   Int
+  video     Video    @relation(fields: [videoId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime
 }

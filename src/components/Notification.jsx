@@ -68,10 +68,12 @@ const NotificationItem = ({
   setHoveredNotification,
 }) => {
   return (
-    <div className="flex mx-1 px-1 items-center justify-start rounded-lg gap-2 cursor-pointer hover:bg-hover" onMouseOver={() => setHoveredNotification(id)}>
-      <DropdownMenuItem
-        className="flex gap-6 px-3 hover:bg-transparent focus:bg-transparent"
-      >
+    <div
+      className="flex mx-1 px-1 items-center justify-start rounded-lg gap-2 cursor-pointer hover:bg-hover"
+      onMouseOver={() => setHoveredNotification(id)}
+      onMouseLeave={() => setHoveredNotification(null)}
+    >
+      <DropdownMenuItem className="flex gap-6 px-3 hover:bg-transparent focus:bg-transparent">
         <Image
           src="/profile.jpg"
           alt="logo"
@@ -98,22 +100,22 @@ const NotificationItem = ({
       <div
         className={`${
           hoveredNotification === id ? "opacity-100" : "opacity-0"
-        } mr-4`}
+        } pr-4`}
       >
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <MenuIcon />
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
-          <DropdownMenuSubContent side='right' align='center'>
-            <DropdownMenuItem>
-              <DropdownMenuLabel>Settings</DropdownMenuLabel>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <DropdownMenuLabel>Logout</DropdownMenuLabel>
-            </DropdownMenuItem>
-          </DropdownMenuSubContent>
+            <DropdownMenuSubContent side="right" align="center">
+              <DropdownMenuItem>
+                <DropdownMenuLabel>Settings</DropdownMenuLabel>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <DropdownMenuLabel>Logout</DropdownMenuLabel>
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
       </div>

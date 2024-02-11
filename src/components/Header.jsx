@@ -111,9 +111,9 @@ const Header = () => {
 
                 <Notification />
 
-                <DropdownMenu>
+                <DropdownMenu >
                   <DropdownMenuTrigger asChild>
-                    <Avatar className="cursor-pointer">
+                    <Avatar className="cursor-pointer ml-1 hover:shadow-xl">
                       <AvatarImage src={data.user.image} alt="avatar" />
                       <AvatarFallback>{data.user.name[0]}</AvatarFallback>
                     </Avatar>

@@ -34,5 +34,5 @@ export function createRipple(event) {
   // Remove span after 0.3s
   setTimeout(() => {
     ripple.remove();
-  }, 3000);
+  }, 300);
 }

@@ -173,7 +173,7 @@ const Sidebar = ({ slided }) => {
           gap: { duration: 0.3, delay: 0.2 },
           overflow: { duration: 0.3, delay: 0.2 },
         }}
-        className={`Sidebar parent h-auto py-2 pb-0 px-3 mt-14 flex flex-col gap-3 scrollbar-animation`}
+        className={`Sidebar parent h-auto py-2 px-3 mt-14 flex flex-col gap-3 scrollbar-animation`}
       >
         <div className={` ${collapsed && "flex flex-col gap-3"} `}>
           <SidebarItem

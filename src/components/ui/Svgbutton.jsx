@@ -4,7 +4,6 @@ import { createRipple } from "@/utils/rippleEffect";
 const Svgbutton = React.forwardRef(({ isactive, className, ...props }, ref) => {
   const handleBtnClick = (event) => {
     createRipple(event);
-    // event.stopPropagation();
   };
 
   return (
